@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Thinkify Labs · A Short Brief</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Thinkify Labs">
+<meta property="og:title" content="A short brief on getting admin time back">
+<meta property="og:description" content="Five yes-or-no questions and a free 30-minute process review, from Thinkify Labs.">
+<meta name="twitter:card" content="summary">
+<!-- GENERIC PAGE: one standard page for every prospect. No merge fields, no tracking, nothing to fill in. Jason to confirm every capability statement before launch. -->
+<style>
+:root{
+  --page:#E8E8E6; --slide:#FFFFFF; --panel:#F3F3F3; --line:#DADADA;
+  --ink:#26262A; --body:#55555B; --quiet:#8A8A90;
+  --crimson:#B8244A; --crimson-d:#9A1D3E; --char:#2B2B2E;
+  --serif:Cambria,Georgia,'Source Serif 4','Times New Roman',serif;
+  --sans:Lato,Calibri,Carlito,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--page);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.5}
+button{font-family:inherit;cursor:pointer}
+a{color:var(--crimson)}
+:focus-visible{outline:3px solid #1B6FD1;outline-offset:2px}
+
+/* ---- the slide ---- */
+.stage{max-width:1040px;margin:0 auto;padding:16px}
+.slide{background:var(--slide);border-radius:4px;box-shadow:0 2px 14px rgba(0,0,0,.12);display:flex;flex-direction:column;min-height:640px;padding:28px 22px 0}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--crimson)}
+.site{font-size:12px;color:var(--quiet)}
+
+/* flow strip, modeled on the product's Propose / Review / Decide / Execute / Audit cards */
+.flow{display:flex;align-items:stretch;gap:0;margin:22px 0 6px;list-style:none;padding:0}
+.flow li{display:flex;align-items:center;flex:1;min-width:0}
+.flow li:not(:last-child)::after{content:"";flex:0 0 22px;height:2px;background:#9A9A9F;margin:0 4px;position:relative}
+.step{flex:1;min-width:0;border:1px solid var(--line);background:var(--slide);border-radius:5px;padding:10px 8px;text-align:center;color:var(--ink);transition:background .2s,color .2s,border-color .2s}
+.step b{display:block;font-size:15px}
+.step small{display:block;font-size:12px;color:var(--quiet);margin-top:2px;line-height:1.25}
+.step[aria-current="step"]{background:var(--crimson);border-color:var(--crimson);color:#fff}
+.step[aria-current="step"] small{color:#F6D5DC}
+.step.done{background:var(--char);border-color:var(--char);color:#fff}
+.step.done small{color:#BDBDC2}
+.step:hover{border-color:var(--ink)}
+@media(max-width:560px){.step small{display:none}.flow li:not(:last-child)::after{flex-basis:12px}}
+
+/* screens */
+.screens{flex:1;padding:26px 0 20px}
+.screen{display:none;animation:in .25s ease}
+.screen.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h1,h2{font-family:var(--serif);color:var(--ink);margin:0;font-weight:700;line-height:1.1;letter-spacing:-.01em}
+h1{font-size:clamp(32px,6vw,52px)}
+h2{font-size:clamp(28px,5vw,42px)}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--quiet);margin:0 0 10px}
+.dear{margin:16px 0 4px;color:var(--ink);font-weight:700}
+.lede{max-width:680px;margin:10px 0 0;font-size:18px;color:var(--body)}
+.rule{margin:22px 0 0;font-weight:700;color:var(--ink);font-size:17px}
+
+.pillars{display:grid;gap:12px;grid-template-columns:1fr;margin:22px 0 0}
+.pillar{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--crimson);border-radius:5px;padding:14px 16px}
+.pillar h3{margin:0 0 4px;color:var(--ink);font-size:17px}
+.pillar p{margin:0;font-size:15px}
+@media(min-width:720px){.pillars{grid-template-columns:repeat(3,1fr)}}
+
+.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:26px}
+.btn{background:var(--crimson);color:#fff;border:0;border-radius:6px;padding:14px 26px;font-size:17px;font-weight:700;text-decoration:none;display:inline-block;min-height:48px}
+.btn:hover{background:var(--crimson-d)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--ink);background:var(--panel)}
+.link{background:none;border:0;color:var(--body);font-size:15px;text-decoration:underline;padding:8px 4px}
+
+/* review: one question at a time */
+.qwrap{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:22px 18px;min-height:230px;display:flex;flex-direction:column;gap:20px}
+.prog{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--quiet);letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.dots{display:flex;gap:6px}
+.dots i{width:28px;height:5px;border-radius:3px;background:#CFCFD2}
+.dots i.on{background:var(--crimson)}
+.dots i.cur{background:var(--ink)}
+.q{font-family:var(--serif);font-size:clamp(22px,4.4vw,31px);line-height:1.22;color:var(--ink);margin:0;font-weight:700;max-width:760px}
+.yn{display:flex;gap:12px;flex-wrap:wrap}
+.yn button{flex:1;min-width:140px;max-width:260px;padding:15px 18px;font-size:18px;font-weight:700;border-radius:6px;border:1px solid var(--line);background:#fff;color:var(--ink);min-height:54px}
+.yn button:hover{border-color:var(--ink)}
+.yn button.sel-y{background:var(--crimson);border-color:var(--crimson);color:#fff}
+.yn button.sel-n{background:var(--char);border-color:var(--char);color:#fff}
+.back{align-self:flex-start}
+.result{display:none;flex-direction:column;gap:14px}
+.score{display:flex;align-items:baseline;gap:10px}
+.score b{font-family:var(--serif);font-size:56px;color:var(--crimson);line-height:1}
+.score span{color:var(--quiet);font-size:18px}
+.meter{display:flex;gap:6px;max-width:360px}
+.meter i{flex:1;height:8px;border-radius:4px;background:#CFCFD2}
+.meter i.on{background:var(--crimson)}
+.verdict{margin:0;color:var(--ink);font-size:18px;max-width:680px}
+.verdict small{display:block;color:var(--crimson);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+
+/* execute */
+.grid2{display:grid;gap:18px;margin-top:22px;grid-template-columns:1fr}
+@media(min-width:760px){.grid2{grid-template-columns:.9fr 1.1fr}}
+.goal{background:var(--char);color:#fff;border-radius:6px;padding:22px 20px;display:flex;flex-direction:column;justify-content:center}
+.goal .big{font-family:var(--serif);font-size:clamp(52px,10vw,76px);font-weight:700;line-height:1;color:#fff}
+.goal p{margin:10px 0 0;color:#E4E4E7;font-size:17px}
+.goal sup{color:#F2A3B5}
+.consult{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:20px}
+.consult h3{margin:0 0 10px;color:var(--ink);font-family:var(--serif);font-size:22px}
+.consult ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.consult li{display:flex;gap:12px;font-size:16px;color:var(--body)}
+.consult li b{color:var(--ink)}
+.consult li::before{content:"";flex:0 0 8px;height:8px;border-radius:50%;background:var(--crimson);margin-top:9px}
+.keep{margin:12px 0 0;color:var(--ink);font-weight:700;font-size:15px}
+.fn{margin:12px 0 0;font-size:13.5px;color:var(--body);max-width:760px}
+.mail{margin-top:14px;color:var(--ink);font-size:16px;word-break:break-word}
+.mail small{display:block;color:var(--quiet);font-size:13.5px}
+.it{margin:12px 0 0;font-size:14.5px;color:var(--body)}
+
+/* footer, like the deck */
+.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);padding:12px 0;font-size:12.5px;color:var(--quiet)}
+.foot .r{display:flex;align-items:center;gap:16px}
+.mark{font-family:var(--serif);font-size:20px;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
+.mark i{color:var(--crimson);font-style:italic}
+.mark small{font-family:var(--sans);font-size:7px;letter-spacing:.3em;margin-left:2px;vertical-align:-6px}
+.legal{padding:0 0 16px;font-size:12px;color:var(--quiet);line-height:1.5}
+.legal p{margin:0 0 4px}
+.legal .f{color:var(--body);font-weight:700}
+.legal a{color:var(--body)}
+
+/* merge fields */
+body.hl .mf{background:rgba(184,36,74,.14);outline:1px dashed var(--crimson);outline-offset:1px;border-radius:3px}
+
+/* mock-only bar */
+#mockbar{background:#1D1D20;color:#C9C9CE;font-size:14px;border-bottom:3px dashed var(--crimson)}
+#mockbar .in{max-width:1040px;margin:0 auto;padding:10px 16px 14px}
+#mockbar .tag{display:inline-block;background:var(--crimson);color:#fff;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:3px 9px;border-radius:4px;margin-right:8px}
+.ctl{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:10px}
+.ctl label{display:flex;flex-direction:column;gap:3px;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.ctl input,.ctl select{width:100%;min-width:0;background:#2B2B2F;border:1px solid #45454B;color:#fff;border-radius:6px;padding:9px 10px;font:inherit;font-size:15px;min-height:40px;text-transform:none;letter-spacing:0}
+.tg{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
+.tg label{display:flex;flex-direction:row;align-items:center;gap:7px;text-transform:none;letter-spacing:0;font-size:14px;color:#fff}
+.tg input{width:18px;height:18px;min-height:0;accent-color:#B8244A}
+@media(min-width:700px){.ctl{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:900px){#mockbar{position:sticky;top:0;z-index:20}.ctl{grid-template-columns:2fr 1.2fr 1fr 1fr 1.4fr}}
+
+@media(min-width:700px){.stage{padding:28px 24px 48px}.slide{padding:34px 44px 0;min-height:680px}}
+@media(max-width:560px){.stage{padding:0}.slide{border-radius:0;box-shadow:none}.foot .site-l{display:none}}
+@media(prefers-reduced-motion:reduce){.screen{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="stage">
+<main class="slide">
+  <div class="top">
+    <div class="eyebrow">Thinkify Labs · A short brief for owners</div>
+    <div class="site">ThinkifyLABS.com</div>
+  </div>
+
+  <ol class="flow" id="flow" aria-label="Steps">
+    <li><button class="step" type="button" data-s="0"><b>1. Propose</b><small>What we suggest</small></button></li>
+    <li><button class="step" type="button" data-s="1"><b>2. Review</b><small>Five yes-or-no questions</small></button></li>
+    <li><button class="step" type="button" data-s="2"><b>3. Execute</b><small>Your next step</small></button></li>
+  </ol>
+
+  <div class="screens">
+
+    <!-- 1. PROPOSE -->
+    <section class="screen" id="s0" aria-labelledby="h0">
+      <p class="dear">Hello,</p>
+      <h1 id="h0">Let us get your time back.</h1>
+      <p class="lede">Quotes start on a spreadsheet, inventory sits in separate files, job cost is trapped in accounting software, and the paperwork is built by hand. Each works. Together they cost you time you don't need to lose.</p>
+      <p class="lede">Thinkify Distribution Management System (TDMS) is built for owners to lead without the admin getting in the way.</p>
+      <div class="pillars">
+        <div class="pillar"><h3>Centralized team management</h3><p>One shared record per customer and site. Everyone works from the same data.</p></div>
+        <div class="pillar"><h3>Decisions, presented whole</h3><p>Quotes, inventory, job cost and the books in front of you before anyone commits.</p></div>
+        <div class="pillar"><h3>Customized to fit</h3><p>Modular. It connects to your existing tools by API and works with your spreadsheets.</p></div>
+      </div>
+      <p class="rule">TDMS proposes. Your people decide. Nothing that moves money, stock or the books happens until a person says yes.</p>
+      <div class="actions">
+        <button class="btn" type="button" data-go="1">Review &rarr;</button>
+      </div>
+    </section>
+
+    <!-- 2. REVIEW -->
+    <section class="screen" id="s1" aria-labelledby="h1">
+      <p class="kicker">Review</p>
+      <h2 id="h1">Which of these sounds like you?</h2>
+      <div class="qwrap" id="qwrap">
+        <div id="qbox">
+          <div class="prog"><span id="qn"></span><span class="dots" id="dots" aria-hidden="true"></span></div>
+          <p class="q" id="q" style="margin-top:16px" aria-live="polite"></p>
+          <div class="yn" style="margin-top:18px" role="group" aria-label="Answer">
+            <button type="button" id="yes">Yes, that's us</button>
+            <button type="button" id="no">No</button>
+          </div>
+          <button class="link back" type="button" id="prev" style="margin-top:8px">&larr; Back</button>
+        </div>
+        <div class="result" id="result" aria-live="polite">
+          <div class="score"><b id="score">0</b><span>of 5 sound like you</span></div>
+          <div class="meter" id="meter"><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="verdict" id="verdict"></p>
+          <div class="actions" style="margin-top:6px">
+            <button class="btn" type="button" data-go="2">Execute &rarr;</button>
+            <button class="link" type="button" id="redo">Answer again</button>
+          </div>
+        </div>
+      </div>
+      <p class="fn" style="margin-top:10px">Nothing is saved or sent. Answer for how things work today.</p>
+      <div class="actions" style="margin-top:8px"><button class="link" type="button" data-go="2">Skip to the next step</button></div>
+    </section>
+
+    <!-- 3. EXECUTE -->
+    <section class="screen" id="s2" aria-labelledby="h2">
+      <p class="kicker">Execute</p>
+      <h2 id="h2">Take back the admin time.</h2>
+      <div class="grid2">
+        <div class="goal">
+          <div class="big">35–50%<sup>*</sup></div>
+          <p>Our goal is to cut 35–50% of the time spent on the admin work we automate.</p>
+        </div>
+        <div class="consult">
+          <h3>A free 30-minute consultation</h3>
+          <ul>
+            <li><span><b>A workflow map</b> of how a quote becomes a job and a job becomes an invoice at your company, on one page.</span></li>
+            <li><span><b>Immediate advice</b> on the three changes that would save the most time.</span></li>
+            <li><span><b>Guidance on building a quote</b> around your business needs.</span></li>
+          </ul>
+          <p class="keep">Yours to keep either way.</p>
+        </div>
+      </div>
+      <p class="fn"><sup>*</sup> A target, not a guarantee. Results depend on your current workflows and how much of the work can be automated. We show our assumptions in the consultation.</p>
+      <div class="actions">
+        <a class="btn" id="mailto" href="#">Execute: email Mike</a>
+        <button class="btn ghost" id="copy" type="button">Copy email address</button>
+      </div>
+      <p class="mail"><b>mike@thinkifylabs.com</b> · expect a reply within 1 business day
+        <small>Subject: <span id="subj">Process review [TL-LI]</span> <button class="link" id="copysubj" type="button" style="padding:0 4px;font-size:13px">Copy subject</button></small></p>
+      <p class="fn" id="inapp" style="display:none"><b>Opened inside LinkedIn?</b> If the email button doesn't open your mail app, tap "Copy email address" and "Copy subject", then write to Mike from your mail app.</p>
+      <p class="it">Thinkify also provides day-to-day managed IT support, so leaving an old server doesn't mean adding another vendor.</p>
+    </section>
+
+  </div>
+
+  <div class="foot">
+    <span>Thinkify DMS &nbsp;|&nbsp; Prospect Brief</span>
+    <span class="r"><span id="pg">1</span><span class="mark" aria-label="Thinkify Labs">Think<i>ify</i><small>LABS</small></span></span>
+  </div>
+  <div class="legal">
+    <p class="f">Mike Landau &amp; Jason Kappel · Thinkify Labs</p>
+    <p>Prepared by Thinkify Labs. This page uses no cookies and does not track you or record your answers.</p>
+    <p>Thinkify Labs · [Physical mailing address: add before launch] · <a id="optout" href="#">Opt out</a> · <a href="https://thinkifylabs.com/privacy" rel="noopener">Privacy policy</a>.</p>
+  </div>
+</main>
+</div>
+
+<script>
+(function(){
+  var SUBJECT="Process review [TL-LI]";
+  var Q=["The same customer or job is typed into more than one system.","Quotes are built by hand from spreadsheets or old quotes.","You can't see what a job really cost until it's closed.","Some of your software runs on a server in the building or on one person's PC.","Proposals, orders and invoices are retyped from earlier work."];
+  var VERDICT=[
+    {max:1,tag:"Mostly in order",txt:"Your setup looks mostly in order. There may still be one seam worth closing, and a consultation would tell you which."},
+    {max:3,tag:"A few seams showing",txt:"A few seams are showing. This is the stage where small gaps start to cost real hours each week."},
+    {max:5,tag:"A familiar pattern",txt:"This sounds like several problems with one root: the data lives in too many places. It's the pattern the consultation is built for."}
+  ];
+  var S={step:0,qi:0,ans:[null,null,null,null,null]};
+  var $=function(i){return document.getElementById(i)};
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+  function links(){
+    var body="Hi Mike,\n\nI'd like to set up the free 30-minute consultation.\n\nName:\nCompany:\nTimes that could work:\n- \n- \n\nThanks";
+    var h="mailto:mike@thinkifylabs.com?subject="+encodeURIComponent(SUBJECT)+"&body="+encodeURIComponent(body);
+    $("mailto").href=h;
+    $("optout").href="mailto:mike@thinkifylabs.com?subject="+encodeURIComponent("Opt out")+"&body="+encodeURIComponent("Please stop contacting me.");
+    if(/LinkedInApp/i.test(navigator.userAgent))$("inapp").style.display="block";
+  }
+  function renderFlow(){
+    document.querySelectorAll(".step").forEach(function(b,i){
+      b.classList.toggle("done",i<S.step);
+      if(i===S.step)b.setAttribute("aria-current","step");else b.removeAttribute("aria-current");
+    });
+    for(var i=0;i<3;i++)$("s"+i).classList.toggle("on",i===S.step);
+    $("pg").textContent=S.step+1;
+  }
+  function renderQ(){
+    var done=S.qi>=5;
+    $("qbox").style.display=done?"none":"block";
+    $("result").style.display=done?"flex":"none";
+    if(!done){
+      $("qn").textContent="Question "+(S.qi+1)+" of 5";
+      $("q").textContent=Q[S.qi];
+      var dots="";for(var i=0;i<5;i++)dots+='<i class="'+(i<S.qi?'on':(i===S.qi?'cur':''))+'"></i>';
+      $("dots").innerHTML=dots;
+      $("yes").className=S.ans[S.qi]===1?"sel-y":"";
+      $("no").className=S.ans[S.qi]===0?"sel-n":"";
+      $("prev").style.visibility=S.qi>0?"visible":"hidden";
+    }else{
+      var n=S.ans.filter(function(a){return a===1}).length;
+      $("score").textContent=n;
+      var m=$("meter").children;for(var j=0;j<5;j++)m[j].className=j<n?"on":"";
+      var v=VERDICT.filter(function(x){return n<=x.max})[0];
+      $("verdict").innerHTML='<small>'+esc(v.tag)+'</small>'+esc(v.txt);
+    }
+  }
+  function go(s){S.step=s;renderFlow();window.scrollTo({top:0,behavior:"smooth"})}
+  function answer(v){S.ans[S.qi]=v;setTimeout(function(){S.qi++;renderQ()},220);renderQ()}
+  $("yes").addEventListener("click",function(){answer(1)});
+  $("no").addEventListener("click",function(){answer(0)});
+  $("prev").addEventListener("click",function(){if(S.qi>0){S.qi--;renderQ()}});
+  $("redo").addEventListener("click",function(){S.ans=[null,null,null,null,null];S.qi=0;renderQ()});
+  document.addEventListener("click",function(e){
+    var g=e.target.closest("[data-go]");if(g){go(+g.getAttribute("data-go"));return}
+    var s=e.target.closest(".step");if(s)go(+s.getAttribute("data-s"));
+  });
+  function copyText(t,btn){
+    var o=btn.textContent;
+    function ok(){btn.textContent="Copied";setTimeout(function(){btn.textContent=o},1800)}
+    function fb(){var x=document.createElement("textarea");x.value=t;x.style.cssText="position:fixed;opacity:0";document.body.appendChild(x);x.select();
+      try{document.execCommand("copy");ok()}catch(e){btn.textContent="Copy: "+t}document.body.removeChild(x)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else{fb()}
+  }
+  $("copy").addEventListener("click",function(){copyText("mike@thinkifylabs.com",this)});
+  $("copysubj").addEventListener("click",function(){copyText(SUBJECT,this)});
+  links();renderFlow();renderQ();
+})();
+</script>
+</body>
+</html>
